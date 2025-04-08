@@ -1,0 +1,69 @@
+import os
+from datetime import datetime
+import shutil
+
+contatti = {}
+
+# MENU
+path_rubrica = "rubrica_telefonica.txt"
+if os.path.exists(path_rubrica):
+    pass
+else:
+    with open(path_rubrica, "w") as file:
+        pass
+
+with open(path_rubrica, "r") as file:
+    for line in file:
+        codice, nome, cognome, numero, mail, data_creazione = line.split(",")
+        contatti[codice] = {
+            "Nome" : nome,
+            "Cognome" : cognome,
+            "Numero" : numero,
+            "Mail": mail,
+            "Data di creazione": data_creazione
+            } 
+
+# MENU 
+while True:
+    print("MENU")
+    print("1. Visualizza rubrica")
+    print("2. Aggiugi un contatto")
+    print("3. Modifica un contatto")
+    print("4. Elimina un contatto")
+    print("5. Cerca rubrica")
+    print("6. Backup rubrica")
+    print("7. Esci")
+
+    scelta_user = input("Fai una scelta: ").strip()
+
+    if scelta_user == "1":
+        print(f"\tRUBRICA: \n {"-"*10} \n")
+        for codice, contatto in contatti.items():
+            print(f"Codice : {codice} \t Nome : {nome} \t Cognome : {cognome} \t Numero : {numero} \t Mail : {mail} ")
+
+    elif scelta_user == "2":
+        print("2")
+    # codice = nome[:2] + cognome[:2] + numero[-2: ]
+
+    elif scelta_user == "3":
+        print("3")
+
+    elif scelta_user == "4":
+        print("4")
+
+    elif scelta_user == "5":
+        print("5")
+
+    elif scelta_user == "6":
+        print("6")
+
+    elif scelta_user == "7":
+        print("7")
+
+    else:
+        print("666")
+
+
+
+
+

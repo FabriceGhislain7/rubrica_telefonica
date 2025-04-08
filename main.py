@@ -37,14 +37,40 @@ while True:
     scelta_user = input("Fai una scelta: ").strip()
 
     if scelta_user == "1":
-        print(f"RUBRICA: \n ")
-        print(f"Codice \t Nome  \t Cognome \t Numero  \t Mail  ")
-        print(f" {"-"*30} \n")
-        for codice, contatto in contatti.items():
-            print(f"{codice} \t {contatto["Nome" ]} \t {contatto["Cognome"]} \t{contatto["Numero"]} \t{contatto["Mail"]} ")
+        if contatti:
+            print(f"RUBRICA: \n ")
+            print(f"Codice \t Nome  \t Cognome \t Numero  \t Mail  ")
+            print(f" {"-"*30} \n")
+            for codice, contatto in contatti.items():
+                print(f"{codice} \t {contatto["Nome" ]} \t {contatto["Cognome"]} \t{contatto["Numero"]} \t{contatto["Mail"]} ")
+        else:
+            print("Rubrica vuota")
 
     elif scelta_user == "2":
-        print("2")
+
+        nuovo_nome = input("Inserisci il nome: ").strip().capitalize()
+        while len(nuovo_nome) < 3:
+            print("Il nome deve essere almeno di 3 caratteri.")
+            nuovo_nome = input("Inserisci il nome: ").strip().capitalize()
+
+        nuovo_cognome = input("Inserisci il cognome: ").strip().capitalize()
+        while len(nuovo_cognome) < 3:
+            print("Il cognome deve essere almeno di 3 caratteri.")
+            nuovo_cognome = input("Inserisci il cognome: ").strip().capitalize()
+
+        nuovo_numero = input("Inserisci il numero: ").strip()
+        while len(nuovo_numero) != 10:
+            print("Il numero deve essere di 10 caratteri.")
+            nuovo_numero = input("Inserisci il numero: ").strip()
+
+
+        nuova_mail = input("Inserisci la mail: ").strip()
+        while "@" not in nuova_mail:
+            print("La mail deve contenere @.")
+            nuovo_numero = input("Inserisci la mail: ").strip()
+     
+
+
     # codice = nome[:2] + cognome[:2] + numero[-2: ]
 
     elif scelta_user == "3":

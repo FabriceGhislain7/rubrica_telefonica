@@ -9,10 +9,10 @@ path_rubrica = "rubrica_telefonica.txt"
 if os.path.exists(path_rubrica):
     pass
 else:
-    with open(path_rubrica, "w") as file:
+    with open(path_rubrica, "w", encoding='utf-8') as file:
         pass
 
-with open(path_rubrica, "r") as file:
+with open(path_rubrica, "r", encoding='utf-8') as file:
     for line in file:
         codice, nome, cognome, numero, mail, data_creazione = line.split(",")
         contatti[codice] = {
@@ -59,19 +59,29 @@ while True:
             nuovo_cognome = input("Inserisci il cognome: ").strip().capitalize()
 
         nuovo_numero = input("Inserisci il numero: ").strip()
-        while len(nuovo_numero) != 10:
+        while len(nuovo_numero) != 10 and not nuovo_numero.isdigit():
             print("Il numero deve essere di 10 caratteri.")
             nuovo_numero = input("Inserisci il numero: ").strip()
 
-
         nuova_mail = input("Inserisci la mail: ").strip()
-        while "@" not in nuova_mail:
+        while '@' not in nuova_mail:
             print("La mail deve contenere @.")
             nuovo_numero = input("Inserisci la mail: ").strip()
+        
+        codice = nuovo_nome[:2].upper() + nuovo_cognome[:2].upper() + nuovo_numero[-4: ]
+
+        if codice in contatti.keys():
+            scelta_modifica = input("Contatto esistente. Vuoi sovrascrivere?(s/n): ")
+            if scelta_modifica == "s":
+                with open(path_rubrica, "w") as file:
+                    contatti.values()
+
+        print(codice)
+        
+        #nuova_data
      
 
 
-    # codice = nome[:2] + cognome[:2] + numero[-2: ]
 
     elif scelta_user == "3":
         print("3")

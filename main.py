@@ -68,13 +68,19 @@ while True:
             print("La mail deve contenere @.")
             nuovo_numero = input("Inserisci la mail: ").strip()
         
-        codice = nuovo_nome[:2].upper() + nuovo_cognome[:2].upper() + nuovo_numero[-4: ]
+        nuovo_codice = nuovo_nome[:2].upper() + nuovo_cognome[:2].upper() + nuovo_numero[-4: ]
 
-        if codice in contatti.keys():
-            scelta_modifica = input("Contatto esistente. Vuoi sovrascrivere?(s/n): ")
+        if nuovo_codice in contatti.keys():
+            scelta_modifica = input("Contatto esistente. Vuoi sovrascrivere?(s/n): ").strip().lower()
             if scelta_modifica == "s":
+                contatti[nuovo_codice] = {
+                    "Nome" : nuovo_nome,
+                    "Cognome" : nuovo_cognome,
+                    "Numero" : nuovo_numero,
+                    "Mail": nuova_mail,
+                    "Data di creazione": data_creazione
+                    } 
                 with open(path_rubrica, "w") as file:
-                    contatti.values()
 
         print(codice)
         

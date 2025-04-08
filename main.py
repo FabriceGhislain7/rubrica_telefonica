@@ -37,9 +37,11 @@ while True:
     scelta_user = input("Fai una scelta: ").strip()
 
     if scelta_user == "1":
-        print(f"\tRUBRICA: \n {"-"*10} \n")
+        print(f"RUBRICA: \n ")
+        print(f"Codice \t Nome  \t Cognome \t Numero  \t Mail  ")
+        print(f" {"-"*30} \n")
         for codice, contatto in contatti.items():
-            print(f"Codice : {codice} \t Nome : {nome} \t Cognome : {cognome} \t Numero : {numero} \t Mail : {mail} ")
+            print(f"{codice} \t {contatto["Nome" ]} \t {contatto["Cognome"]} \t{contatto["Numero"]} \t{contatto["Mail"]} ")
 
     elif scelta_user == "2":
         print("2")

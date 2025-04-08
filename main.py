@@ -4,7 +4,7 @@ import shutil
 
 contatti = {}
 
-# MENU
+# Creazione della rubrica telefonica
 path_rubrica = "rubrica_telefonica.txt"
 if os.path.exists(path_rubrica):
     pass
@@ -12,6 +12,7 @@ else:
     with open(path_rubrica, "w", encoding='utf-8') as file:
         pass
 
+# Lettura della rubica telefonnica
 with open(path_rubrica, "r", encoding='utf-8') as file:
     for line in file:
         codice, nome, cognome, numero, mail, data_creazione = line.split(",")
@@ -36,6 +37,7 @@ while True:
 
     scelta_user = input("Fai una scelta: ").strip()
 
+    # Gestione della scelta dell'utente
     if scelta_user == "1":
         if contatti:
             print(f"RUBRICA: \n ")
@@ -59,9 +61,9 @@ while True:
             nuovo_cognome = input("Inserisci il cognome: ").strip().capitalize()
 
         nuovo_numero = input("Inserisci il numero: ").strip()
-        while len(nuovo_numero) != 10 and not nuovo_numero.isdigit():
-            print("Il numero deve essere di 10 caratteri.")
-            nuovo_numero = input("Inserisci il numero: ").strip()
+        # while len(nuovo_numero) != 10 and not nuovo_numero.isdigit():
+        #     print("Il numero deve essere di 10 caratteri.")
+        #     nuovo_numero = input("Inserisci il numero: ").strip()
 
         nuova_mail = input("Inserisci la mail: ").strip()
         while '@' not in nuova_mail:
@@ -70,9 +72,12 @@ while True:
         
         nuovo_codice = nuovo_nome[:2].upper() + nuovo_cognome[:2].upper() + nuovo_numero[-4: ]
 
-        if nuovo_codice in contatti.keys():
+        # Gestione della creazione o della sovrascrittura del contatto.
+        print(contatti)
+        if nuovo_codice in contatti:
             scelta_modifica = input("Contatto esistente. Vuoi sovrascrivere?(s/n): ").strip().lower()
             if scelta_modifica == "s":
+                data_creazione = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                 contatti[nuovo_codice] = {
                     "Nome" : nuovo_nome,
                     "Cognome" : nuovo_cognome,
@@ -80,12 +85,13 @@ while True:
                     "Mail": nuova_mail,
                     "Data di creazione": data_creazione
                     } 
-                with open(path_rubrica, "w") as file:
+        with open(path_rubrica, "w") as file:
+            file.write(f"codice, nome, cognome, numero, mail, data_creazione\n")
+            for codice, contatto in contatti.items():
+                file.write(f"{codice}, {contatto["Nome" ]}, {contatto["Cognome"]}, {contatto["Numero"]}, {contatto["Mail"]}, {data_creazione}\n")
 
-        print(codice)
-        
-        #nuova_data
-     
+        # print(codice)
+
 
 
 

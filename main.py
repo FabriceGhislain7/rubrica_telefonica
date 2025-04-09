@@ -61,9 +61,9 @@ while True:
             nuovo_cognome = input("Inserisci il cognome: ").strip().capitalize()
 
         nuovo_numero = input("Inserisci il numero: ").strip()
-        # while len(nuovo_numero) != 10 and not nuovo_numero.isdigit():
-        #     print("Il numero deve essere di 10 caratteri.")
-        #     nuovo_numero = input("Inserisci il numero: ").strip()
+        while len(nuovo_numero) != 10 and not nuovo_numero.isdigit():
+          print("Il numero deve essere di 10 caratteri.")
+          nuovo_numero = input("Inserisci il numero: ").strip()
 
         nuova_mail = input("Inserisci la mail: ").strip()
         while '@' not in nuova_mail:
@@ -91,8 +91,6 @@ while True:
                 file.write(f"{codice}, {contatto["Nome" ]}, {contatto["Cognome"]}, {contatto["Numero"]}, {contatto["Mail"]}, {data_creazione}\n")
 
         # print(codice)
-
-
 
 
     elif scelta_user == "3":

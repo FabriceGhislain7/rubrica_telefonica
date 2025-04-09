@@ -5,14 +5,14 @@ import shutil
 contatti = {}
 
 # MENU
-path_rubrica = "rubrica_telefonica.txt"
-if os.path.exists(path_rubrica):
+path_libro = "libro.txt"
+if os.path.exists(path_libro):
     pass
 else:
-    with open(path_rubrica, "w") as file:
+    with open(path_libro, "w") as file:
         pass
 
-with open(path_rubrica, "r") as file:
+with open(path_libro, "r") as file:
     for line in file:
         codice, nome, cognome, numero, mail, data_creazione = line.split(",")
         contatti[codice] = {
@@ -24,5 +24,5 @@ with open(path_rubrica, "r") as file:
             } 
 
 # MENU 
-for codice, contatto in contatti:
-    print(f"{codice}: {contatto}")
+for codice, contatto in contatti.items():
+    file.write(f"{codice}, {contatto["Nome" ]}, {contatto["Cognome"]}, {contatto["Numero"]}, {contatto["Mail"]}, {data_creazione}\n")

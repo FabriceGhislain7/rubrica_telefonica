@@ -17,11 +17,11 @@ with open(path_rubrica, "r", encoding='utf-8') as file:
     for line in file:
         codice, nome, cognome, numero, mail, data_creazione = line.split(",")
         contatti[codice] = {
-            "Nome" : nome,
-            "Cognome" : cognome,
-            "Numero" : numero,
-            "Mail": mail,
-            "Data di creazione": data_creazione
+            "Nome" : nome.strip(),
+            "Cognome" : cognome.strip(),
+            "Numero" : numero.strip(),
+            "Mail": mail.strip(),
+            "Data di creazione": data_creazione.strip()
             } 
 
 # MENU 
@@ -161,45 +161,44 @@ while True:
         scelta_cerca = input("Cerca contatto per codice (1), nome (2), cognome (3):").strip()
         if scelta_cerca == "1":
             codice_ricerca = input("Scrivi il codice: ").strip().upper()
-            # for contatto in contatti:
             if codice_ricerca in contatti.keys():
                 print(f"'Codice': {codice_ricerca}, {contatti[codice_ricerca]}")
             else: 
                 print("Il codice non esistente.")
 
         elif scelta_cerca == "2":
-            nome_ricerca = input("Scrivi il nome: ").strip().capitalize()
-            for codice, contatto in contatti.items():
-                print(contatto)
-                
-                """
-                if contatto["Nome"] == nome_ricerca:
-                    codice_cercato = codice
-                    print(contatti[codice_cercato])
-                    break
-                else:
-                    pass
-                """
-
-           # if nome_ricerca in contatti.values():
-            #     print(f"'Codice': {nome_ricerca}, {contatti.items("Nome")}")
-           # else: 
-            #     print(f"'Nome': {nome_ricerca} non è stato troovato.5")
-            # contatti[codice_elimina]["Nome"]
+            nome_ricerca = input("Scrivi il nome da cercare: ").strip().capitalize()
+            for key, contatto in contatti.items():
+                if nome_ricerca == contatto['Nome']:
+                    codice_ricercato = key
+                    print("il contatto presente nella rubrica telefonica:")
+                    print(f"Codice: {key}, {contatti[key]}")
+                else: 
+                    print("Nome non trovato.")
 
         elif scelta_cerca == "3":
-            pass
-            
+            cognome_ricerca = input("Scrivi il cognome da cercare: ").strip().capitalize()
+            for key, contatto in contatti.items():
+                if cognome_ricerca == contatto['Nome']:
+                    codice_ricercato = key
+                    print("il contatto è presente nella rubrica telefonica:")
+                    print(f"Codice: {key}, {contatti[key]}")
+                else: 
+                    print("Cognome non trovato.")
+            pass            
 
         else:
-            print("inserisci solo il numero")
+            print("Il numero inserito non è valido.")
         
 
     elif scelta_user == "6":
         print("6")
 
     elif scelta_user == "7":
-        print("7")
-
+        scelta_utente = input("Inserisci(s) per uscire dal programma o qualunque lettera per tornare al menu principale?: ")
+        if scelta_utente == 's':
+            exit()
+        else:
+            continue
     else:
-        print("666")
+        print("Scelta non valida. Inserisci un numero tra 1 e 7 per accedere alle opzioni del menu.")

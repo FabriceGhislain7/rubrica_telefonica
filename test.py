@@ -12,7 +12,7 @@ else:
     with open(path_rubrica, "w", encoding='utf-8') as file:
         pass
 
-# Lettura della rubica telefonnica
+# Lettura della rubica telefonica
 with open(path_rubrica, "r", encoding='utf-8') as file:
     for line in file:
         codice, nome, cognome, numero, mail, data_creazione = line.split(",")
@@ -31,7 +31,7 @@ while True:
     print("2. Aggiugi un contatto")
     print("3. Modifica un contatto")
     print("4. Elimina un contatto")
-    print("5. Cerca rubrica")
+    print("5. Cerca contatto")
     print("6. Backup rubrica")
     print("7. Esci")
 

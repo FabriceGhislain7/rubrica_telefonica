@@ -38,3 +38,20 @@
 ```python
 
 ```
+## Diagramma di flusso
+
+```mermaid
+graph TD
+    A[Creazione rubrca] --> B[Lettura della rubrica]
+    B[Lettura della rubrica] --> C@{ shape: diamond, label: menu per le opzioni }
+    C@{ shape: diamond, label: menu per le opzioni } <--> D[1.Visualizza rubrica] 
+    C@{ shape: diamond, label: menu per le opzioni } <--> E[2.Aggiugi un contatto]
+    C@{ shape: diamond, label: menu per le opzioni } <--> F[3.Modifica un contatto]
+    C@{ shape: diamond, label: menu per le opzioni } <--|Elimina un contatto|--> K@{ shape: diamond, label: menu per le opzioni }
+    C@{ shape: diamond, label: menu per le opzioni } <--> H[5.Cerca rubrica]
+    C@{ shape: diamond, label: menu per le opzioni } <--> I[6.Backup rubrica]
+    C@{ shape: diamond, label: menu per le opzioni } <--> J[0.Esci]
+
+   
+   
+```

@@ -141,12 +141,16 @@ flowchart LR
 
 ### Elimina Contatto
 
-Viene chiesto all'utente di inserire il codice del contatto che vuole eliminare. 
-Se il codice è già presente in rubrica, chiede all'utente di inserire i nuovi dati. I controlli sui nuovi dati sono gli stessi del punto precedente. Un nuovo codice corrispondente viene generato. Viene chiesto all'utente se vuole sovrascrivere. In caso di risposta affermativa, il contatto viene salvato in rubrica.
+Viene chiesto all'utente di inserire il codice del contatto che vuole eliminare. Se contatto presente in rubrica, questo viene eliminato.
 
 
 ```python
-
+if codice_elimina not in contatti.keys():
+            print("Nessuno contatto esistente con questo codice.")
+            continue
+        else:
+            print(f"contatto con codice {codice_elimina} e nome {contatti[codice_elimina]["Nome"]} eliminato")
+            contatti.pop(codice_elimina)
 ```
 
 ```mermaid

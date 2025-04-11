@@ -118,7 +118,7 @@ flowchart LR
 ### Modifica Contatto
 
 Viene chiesto all'utente di inserire il codice del contatto che vuole modificare. 
-Se il codice è già presente in rubrica, chiede all'utente di minserire i nuovi dati. I controlli sui nuovi dati sono gli stessi del punto precedente. Un nuovo codice corrispondente viene generato. Viene chiesto all'utente se vuole sovrascrivere. In caso di risposta affermativa, il contatto viene salvato in rubrica.
+Se il codice è già presente in rubrica, chiede all'utente di inserire i nuovi dati. I controlli sui nuovi dati sono gli stessi del punto precedente. Un nuovo codice corrispondente viene generato. Viene chiesto all'utente se vuole sovrascrivere. In caso di risposta affermativa, il contatto viene salvato in rubrica.
 
 
 ```python
@@ -138,7 +138,17 @@ flowchart LR
     nuovi dati]--> F[Salva modifiche
      nel file]
 ```
+
 ### Elimina Contatto
+
+Viene chiesto all'utente di inserire il codice del contatto che vuole eliminare. 
+Se il codice è già presente in rubrica, chiede all'utente di inserire i nuovi dati. I controlli sui nuovi dati sono gli stessi del punto precedente. Un nuovo codice corrispondente viene generato. Viene chiesto all'utente se vuole sovrascrivere. In caso di risposta affermativa, il contatto viene salvato in rubrica.
+
+
+```python
+
+```
+
 ```mermaid
 flowchart TD
     A[Inserisci codice da eliminare] --> B{Codice esiste?}

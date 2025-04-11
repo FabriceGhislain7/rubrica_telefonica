@@ -186,27 +186,20 @@ flowchart LR
 ```
 ### Backup
 
-Viene ...
+La rubrica viene salvata in una cartella di backup.
 
 ```python
-
+        if not os.path.exists('backup'):
+            os.makedirs('backup', exist_ok=True)
+        data_ora = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+        shutil.copy('rubrica_telefonica.txt', f'backup/rubrica_backup_{data_ora}.txt')
 ```
 ```mermaid
 flowchart LR
-    A[Backup Rubrica] --> B[Copia file originale]
-    B --> C[Rinomina con timestamp]
-    C --> D[Salva file di backup]
-
+    A[Crea cartella
+     backup se non 
+     presente] --> B[Copia file originale
+     nella cartella di backup]
 ```
 ### Esci
 Dopo questa scelta, l'utente può uscire dal programma.
-
-```python
-
-```
-```mermaid
-flowchart LR
-    B{Uscire dal programma?} -- Sì --> C[Termina programma]
-    B -- No --> D[Torna al menu principale]
-
-```

@@ -192,14 +192,14 @@ while True:
         
 
     elif scelta_user == "6":
-        with open()
-        print("6")
+        path_backup = "backup"
+        if not os.path.exists('backup'):
+            os.makedirs('backup', exist_ok=True)
+        data_ora = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+        shutil.copy('rubrica_telefonica.txt', f'backup/rubrica_backup_{data_ora}.txt')
+        print(f"Backup eseguito su backup/rubrica_backup_{data_ora}.txt")
 
     elif scelta_user == "7":
-        scelta_utente = input("Inserisci(s) per uscire dal programma o qualunque lettera per tornare al menu principale?: ")
-        if scelta_utente == 's':
-            exit()
-        else:
-            continue
+        exit()
     else:
         print("Scelta non valida. Inserisci un numero tra 1 e 7 per accedere alle opzioni del menu.")

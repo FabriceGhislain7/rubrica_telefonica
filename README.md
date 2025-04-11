@@ -154,30 +154,59 @@ if codice_elimina not in contatti.keys():
 ```
 
 ```mermaid
-flowchart TD
-    A[Inserisci codice da eliminare] --> B{Codice esiste?}
-    B -- No --> C[Errore: contatto non trovato]
-    B -- Sì --> D[Elimina contatto]
-    D --> E[Aggiorna file]
+flowchart LR
+    A[Inserisci codice 
+    da eliminare] --Se codice 
+    esiste --> D[Elimina 
+    contatto]
+    D --> E[Aggiorna 
+    file]
 ```
 ### Cerca Contatto
 
+Viene chiesto all'utente di inserire il codice o il nome o il cognome del contatto che vuole cercare. Se contatto presente in rubrica, questo viene mostrato.
+
+```python
+scelta_cerca = input("Cerca contatto per codice (1), nome (2), cognome (3):").strip()
+        if scelta_cerca == "1":
+            codice_ricerca = input("Scrivi il codice: ").strip().upper()
+            if codice_ricerca in contatti.keys():
+                print(f"'Codice': {codice_ricerca}, {contatti[codice_ricerca]}")
+            else: 
+                print("Il codice non esistente.")
+# stessa cosa per scelta 2 e 3
+```
+
 ```mermaid
-flowchart TD
-    A[Cerca contatto] --> B{Metodo di ricerca}
-    B --> C1[Per Codice]
-    B --> C2[Per Nome]
-    B --> C3[Per Cognome]
-    
-    C1 --> D1{Codice trovato?}
-    D1 -- Sì --> E1[Mostra dati]
-    D1 -- No --> F1[Errore: non trovato]
+flowchart LR
+    A[Cerca contatto] --> B{Metodo di ricerca} 
+    B --Per Codice --> D1[Mostra se trovato]
+    B --Per Nome --> D1
+    B --Per Cognome --> D1 
+```
+### Backup
 
-    C2 --> D2[Loop su tutti i contatti]
-    D2 --> E2[Mostra se trovato]
-    D2 --> F2[Errore se non trovato]
+Viene ...
 
-    C3 --> D3[Loop su tutti i contatti]
-    D3 --> E3[Mostra se trovato]
-    D3 --> F3[Errore se non trovato]
+```python
+
+```
+```mermaid
+flowchart LR
+    A[Backup Rubrica] --> B[Copia file originale]
+    B --> C[Rinomina con timestamp]
+    C --> D[Salva file di backup]
+
+```
+### Esci
+Dopo questa scelta, l'utente può uscire dal programma.
+
+```python
+
+```
+```mermaid
+flowchart LR
+    B{Uscire dal programma?} -- Sì --> C[Termina programma]
+    B -- No --> D[Torna al menu principale]
+
 ```

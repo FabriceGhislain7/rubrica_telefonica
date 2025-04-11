@@ -192,6 +192,7 @@ while True:
         
 
     elif scelta_user == "6":
+        with open()
         print("6")
 
     elif scelta_user == "7":

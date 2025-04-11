@@ -54,9 +54,12 @@ graph TD
     rubrica]
     B --> C7[Esci]
 ```
-</details>
+
 
 ### Visualizza rubrica
+
+<details>
+<summary>Mostra dettagli</summary>
 
 Nel terminale vengono restituiti tutti i contatti presenti in rubrica, solo nel caso di rubrica non vuota. 
 
@@ -76,8 +79,12 @@ flowchart LR
     A[Visualizza rubrica] -- Se rubrica 
     non vuota--> C[Mostra tutti i contatti]
 ```
+</details>
 
 ### Aggiungi Contatto
+
+<details>
+<summary>Mostra dettagli</summary>
 
 Viene chiesto all'utente di inserire i dati (nome, cognome, numero, mail). Il programma effettua i dovuti controlli per ogni campo:
 - nome, cognome: più di 3 caratteri
@@ -114,8 +121,12 @@ flowchart LR
     F -- Sì --> H{Sovrascrivere?}
     H -- Sì --> G
 ```
+</details>
 
 ### Modifica Contatto
+
+<details>
+<summary>Mostra dettagli</summary>
 
 Viene chiesto all'utente di inserire il codice del contatto che vuole modificare. 
 Se il codice è già presente in rubrica, chiede all'utente di inserire i nuovi dati. I controlli sui nuovi dati sono gli stessi del punto precedente. Un nuovo codice corrispondente viene generato. Viene chiesto all'utente se vuole sovrascrivere. In caso di risposta affermativa, il contatto viene salvato in rubrica.
@@ -138,8 +149,12 @@ flowchart LR
     nuovi dati]--> F[Salva modifiche
      nel file]
 ```
+</details>
 
 ### Elimina Contatto
+
+<details>
+<summary>Mostra dettagli</summary>
 
 Viene chiesto all'utente di inserire il codice del contatto che vuole eliminare. Se contatto presente in rubrica, questo viene eliminato.
 
@@ -162,7 +177,12 @@ flowchart LR
     D --> E[Aggiorna 
     file]
 ```
+</details>
+
 ### Cerca Contatto
+
+<details>
+<summary>Mostra dettagli</summary>
 
 Viene chiesto all'utente di inserire il codice o il nome o il cognome del contatto che vuole cercare. Se contatto presente in rubrica, questo viene mostrato.
 
@@ -184,7 +204,12 @@ flowchart LR
     B --Per Nome --> D1
     B --Per Cognome --> D1 
 ```
+</details>
+
 ### Backup
+
+<details>
+<summary>Mostra dettagli</summary>
 
 La rubrica viene salvata in una cartella di backup.
 
@@ -201,5 +226,7 @@ flowchart LR
      presente] --> B[Copia file originale
      nella cartella di backup]
 ```
+</details>
+
 ### Esci
 Dopo questa scelta, l'utente può uscire dal programma.

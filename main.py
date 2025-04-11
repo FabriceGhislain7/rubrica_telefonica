@@ -22,9 +22,9 @@ with open(path_rubrica, "r", encoding='utf-8') as file:
             "Numero" : numero.strip(),
             "Mail": mail.strip(),
             "Data di creazione": data_creazione.strip()
-            } 
+            }
 
-# MENU 
+# MENU
 while True:
     print("MENU")
     print("1. Visualizza rubrica")
@@ -59,17 +59,23 @@ while True:
         while len(nuovo_cognome) < 3:
             print("Il cognome deve essere almeno di 3 caratteri.")
             nuovo_cognome = input("Inserisci il cognome: ").strip().capitalize()
+        
 
-        nuovo_numero = input("Inserisci il numero: ").strip()
-        while len(nuovo_numero) != 10 and not nuovo_numero.isdigit():
-          print("Il numero deve essere di 10 caratteri.")
-          nuovo_numero = input("Inserisci il numero: ").strip()
-
+#        while True:
+            try:
+                nuovo_numero = input("Inserisci il numero: ").strip()
+                if not nuovo_numero.isdigit():
+                    raise ValueError("Il valore inserito deve essere un numero.")
+                if len(nuovo_numero) != 10:
+                    raise ValueError("Il numero deve essere di 10 caratteri.")
+            except ValueError as e:
+                print(f"Errore: {e}")
+    
         nuova_mail = input("Inserisci la mail: ").strip()
         while '@' not in nuova_mail:
             print("La mail deve contenere @.")
             nuova_mail = input("Inserisci la mail: ").strip()
-        
+
         nuovo_codice = nuovo_nome[:2].upper() + nuovo_cognome[:2].upper() + nuovo_numero[-4: ]
 
         # Gestione della creazione o della sovrascrittura del contatto.
@@ -87,7 +93,7 @@ while True:
             "Numero" : nuovo_numero,
             "Mail": nuova_mail,
             "Data di creazione": data_creazione
-            } 
+            }
         # print(codice)
 
         with open(path_rubrica, "w") as file:
@@ -120,7 +126,7 @@ while True:
             while '@' not in nuovo_mail:
                 print("La mail deve contenere @.")
                 nuovo_mail = input("Inserisci la mail: ").strip()
-            
+
             nuovo_codice = nuovo_nome[:2].upper() + nuovo_cognome[:2].upper() + nuovo_numero[-4: ]
             cambio_codice = input(f"Cambiare il vecchio codice {codice_modifica} in {nuovo_codice}? (s/n) ")
             if cambio_codice == "s":
@@ -135,7 +141,7 @@ while True:
                 "Numero" : nuovo_numero,
                 "Mail": nuovo_mail,
                 "Data di creazione": data_creazione
-                }   
+                }
 
             with open(path_rubrica, "w") as file:
                 for codice, contatto in contatti.items():
@@ -163,7 +169,7 @@ while True:
             codice_ricerca = input("Scrivi il codice: ").strip().upper()
             if codice_ricerca in contatti.keys():
                 print(f"'Codice': {codice_ricerca}, {contatti[codice_ricerca]}")
-            else: 
+            else:
                 print("Il codice non esistente.")
 
         elif scelta_cerca == "2":
@@ -173,7 +179,7 @@ while True:
                     codice_ricercato = key
                     print("il contatto presente nella rubrica telefonica:")
                     print(f"Codice: {key}, {contatti[key]}")
-                else: 
+                else:
                     print("Nome non trovato.")
 
         elif scelta_cerca == "3":
@@ -183,13 +189,13 @@ while True:
                     codice_ricercato = key
                     print("il contatto è presente nella rubrica telefonica:")
                     print(f"Codice: {key}, {contatti[key]}")
-                else: 
+                else:
                     print("Cognome non trovato.")
-            pass            
+            pass
 
         else:
             print("Il numero inserito non è valido.")
-        
+
 
     elif scelta_user == "6":
         if not os.path.exists('backup'):
